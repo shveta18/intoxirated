@@ -2,13 +2,31 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
+        {{!-- <h1>{{msg}}</h1> --}}
+        <h2>Alchoholic Beverage Center</h2>
+        <form class="clearfix mb-4" action="GET">
+          <label for="drinkCategory">What type of alchoholic beverage would you like to search for?</label>
+          <select name="drinkCategory" id="drinkCategorySelect">
+            <option value="Wine">Wine</option>
+            <option value="Beer">Beer</option>
+            <option value="Rum">Rum</option>
+            <option value="Vodka">Vodka</option>
+            <option value="Vodka">Tequila</option>
+            <option value="Whisky">Whisky</option>
+          </select>
+
+          <label for="searchCategory">What would you like to search by?</label>
+          <select name="searchCategory" id="searchCategorySelect">
+            <option value="nameOfBeverage">Name of Beverage</option>
+            <option value="brewer">brewer</option>
+            <option value="rating">rating</option>
+          </select>
+
           <div class="form-group">
-            <label for="example-text">Example Text</label>
+            <label for="example-text">Search</label>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div>
+          
           <div class="form-group">
             <label for="example-description">Example Description</label>
             <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
