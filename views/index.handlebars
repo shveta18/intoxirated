@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-8 offset-2">
         {{!-- <h1>{{msg}}</h1> --}}
-        <h2>Alchoholic Beverage Center</h2>
+        <h1 id="header">Alchoholic Beverage Center</h1>
         <form class="clearfix mb-4" action="GET">
           <label for="drinkCategory">What type of alchoholic beverage would you like to search for?</label>
           <select name="drinkCategory" id="drinkCategorySelect">
@@ -18,30 +18,17 @@
           <label for="searchCategory">What would you like to search by?</label>
           <select name="searchCategory" id="searchCategorySelect">
             <option value="nameOfBeverage">Name of Beverage</option>
-            <option value="brewer">brewer</option>
-            <option value="rating">rating</option>
+            <option value="brewer">Brewer</option>
+            <option value="rating">Rating</option>
           </select>
 
           <div class="form-group">
-            <label for="example-text">Search</label>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div>
           
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
+          
+          <button id="submit" class="btn btn-primary float-right">Search</button>
         </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
       </div>
     </div>
   </div>

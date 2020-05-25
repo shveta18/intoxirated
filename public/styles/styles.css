@@ -1,3 +1,8 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+#header {
+  margin-top: 30;
+  margin-bottom: 30;
+}
