@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-8 offset-2">
         {{!-- <h1>{{msg}}</h1> --}}
-        <h1 id="header">Alchoholic Beverage Center</h1>
+        <h1 id="header">IntoxiRated</h1>
         <form class="clearfix mb-4" action="GET">
           <label for="drinkCategory">What type of alchoholic beverage would you like to search for?</label>
           <select name="drinkCategory" id="drinkCategorySelect">
@@ -12,7 +12,7 @@
             <option value="Rum">Rum</option>
             <option value="Vodka">Vodka</option>
             <option value="Vodka">Tequila</option>
-            <option value="Whisky">Whisky</option>
+            <option value="Whiskey">Whiskey</option>
           </select>
 
           <label for="searchCategory">What would you like to search by?</label>
@@ -22,9 +22,13 @@
             <option value="rating">Rating</option>
           </select>
 
-          <div class="form-group">
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
+         <div class="form-group">
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Manufacturer/Brewer/Distillery">
+      </div>
+
+       <div class="form-group">
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Name">
+      </div>
           
           
           <button id="submit" class="btn btn-primary float-right">Search</button>
@@ -36,3 +40,4 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+
