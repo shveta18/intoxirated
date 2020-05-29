@@ -13,7 +13,7 @@ module.exports = function(app) {
   
   app.get("/wine", function(req, res) {
     db.Wine.findAll({}).then(function(wines) {
-      res.render("index", {
+      res.render("wine", {
         msg: "Welcome!",
         examples: wines
       });

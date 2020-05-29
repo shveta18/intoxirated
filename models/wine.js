@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Wines = sequelize.define("Wines", {
+  var Wine = sequelize.define("Wine", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -7,21 +7,35 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
         }
     },
-    maker: {
+    manufacturer: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1]
+      }
+    },
+    style: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [1]
+      }
+    }, 
+    year: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [4,4]
       }
     },
     rating: {
       type: DataTypes.INTEGER,
       allowNull: true,
       validate: {
-        max: 5,
+        max: 10,
         min: 1
       }
     }
   });
-  return Wines;
+  return Wine;
 };
