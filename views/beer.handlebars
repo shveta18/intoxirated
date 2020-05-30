@@ -1,0 +1,11 @@
+<div>
+
+    <h2>Beer List!</h2>
+
+    <ul>
+        {{#each beers}}  
+        <p>{{this.dataValues.id}}. Name: {{this.dataValues.name}}, Brewer: {{this.dataValues.brewer}}, Style: {{this.dataValues.style}}, ABV: {{this.dataValues.abv}}, IBU: {{this.dataValues.ibu}}, Rating: {{this.dataValues.rating}}</p>
+        {{/each}}
+    </ul>
+
+</div>

@@ -20,9 +20,16 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/beer", function(req, res) {
-    res.render("beer-manager")
+  app.get("/add-beer", function(req, res) {
+    res.render("addBeer")
   })
+
+  app.get("/beer", function(req, res) {
+    db.Wine.findAll({}).then(function(data) {
+      console.log(data)
+      res.render("beer", {beers: data})
+    });
+  });
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
