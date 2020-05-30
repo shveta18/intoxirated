@@ -15,8 +15,8 @@ module.exports = function(app) {
   
   app.get("/wine", function(req, res) {
     db.Wine.findAll({}).then(function(data) {
-      console.log(data.dataValues)
-      res.render("wine", {wines: data.dataValues})
+      console.log(data)
+      res.render("wine", {wines: data})
     });
   });
 

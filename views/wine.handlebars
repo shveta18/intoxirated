@@ -4,7 +4,7 @@
 
     <ul>
         {{#each wines}}  
-        <p>{{this.id}}. {{this.name}}</p>
+        <p>{{this.dataValues.id}}. Name: {{this.dataValues.name}}, Manufacturer: {{this.dataValues.manufacturer}}, Style: {{this.dataValues.style}}, Year: {{this.dataValues.year}}, Rating: {{this.dataValues.rating}}</p>
         {{/each}}
     </ul>
 
