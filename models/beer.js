@@ -32,6 +32,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DECIMAL,
             allowNull: true,
         },
+        ibu: {
+            type: DataTypes.DECIMAL,
+            allowNull: true,
+        },
         rating: {
             type: DataTypes.INTEGER,
             allowNull: true,
