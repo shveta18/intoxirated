@@ -9,14 +9,14 @@ module.exports = function(app) {
   
   
   
-  
+  app.get("/add-wine", function(req, res) {
+    res.render("addWine")
+  })
   
   app.get("/wine", function(req, res) {
-    db.Wine.findAll({}).then(function(wines) {
-      res.render("wine", {
-        msg: "Welcome!",
-        examples: wines
-      });
+    db.Wine.findAll({}).then(function(data) {
+      console.log(data)
+      res.render("wine", {wines: data})
     });
   });
 
