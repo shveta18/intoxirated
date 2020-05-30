@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Whiskey = sequelize.define("Whiskey", {
+    var Gin = sequelize.define("Gin", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: true,
             validate: {
-                len: [1, 3]
+                len: [4, 4]
             }
         },
         rating: {
@@ -37,5 +37,5 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     });
-    return Whiskey;
+    return Gin;
 };
