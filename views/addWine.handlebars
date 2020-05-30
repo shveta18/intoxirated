@@ -1,0 +1,38 @@
+<h1>Add Wine</h1>
+
+<form method="POST" role="form">
+
+    <div class="form-group questions">
+        <label for="name">Enter Name</label>
+        <input type="text" class="form-control" id="name">
+    </div>
+
+    <div class="form-group questions">
+        <label for="link-to-picture">Enter Manufacturer</label>
+        <input type="text" class="form-control" id="manufacturer">
+    </div>
+
+    <div class="form-group questions">
+        <label for="link-to-picture">Enter Style</label>
+        <input type="text" class="form-control" id="style">
+    </div>
+
+    <div class="form-group questions">
+        <label for="link-to-picture">Enter Year</label>
+        <input type="number" class="form-control" id="year">
+    </div>
+
+    <div class="form-group questions">
+        <label for="link-to-picture">Enter rating</label>
+        <input type="number" min="1" max="10" class="form-control" id="rating">
+    </div>
+
+    
+    <button type="button" class="btn btn-warning" id="createWine">
+		<span class="fas fa-wine-glass"></span>Rate a Wine!</button>
+
+</form>
+
+
+<script src="/js/index.js"></script>
+<script src="/js/wineFrontEnd.js"></script>
