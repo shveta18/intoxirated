@@ -1,6 +1,7 @@
 $("#createWine").on("click", function(){
     var newWine = {
-        name: $("#name").val().trim()
+        name: $("#name").val().trim(),
+        manufacturer: 
     }
 })
 
