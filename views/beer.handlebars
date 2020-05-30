@@ -1,11 +1,24 @@
 <div>
-
     <h2>Beer List!</h2>
 
-    <ul>
-        {{#each beers}}  
-        <p>{{this.dataValues.id}}. Name: {{this.dataValues.name}}, Brewer: {{this.dataValues.brewer}}, Style: {{this.dataValues.style}}, ABV: {{this.dataValues.abv}}, IBU: {{this.dataValues.ibu}}, Rating: {{this.dataValues.rating}}</p>
-        {{/each}}
-    </ul>
-
+    <table class="beer-list">
+        <tr>
+            <th>Name</th>
+            <th>Brewer</th>
+            <th>Style</th>
+            <th>ABV</th>
+            <th>IBU</th>
+            <th>Rating</th>
+        </tr>
+        <tr>
+          {{#each beers}}
+            <td>{{this.dataValues.name}}</td>
+            <td>{{this.dataValues.brewer}}</td>
+            <td>{{this.dataValues.style}}</td>
+            <td>{{this.dataValues.abv}}</td>
+            <td>{{this.dataValues.ibu}}</td>
+            <td>{{this.dataValues.rating}}</td> 
+          {{/each}}  
+        </tr>
+    </table>
 </div>
