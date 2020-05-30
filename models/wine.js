@@ -35,6 +35,16 @@ module.exports = function(sequelize, DataTypes) {
         max: 10,
         min: 1
       }
+    },
+    createdAt: {
+      type: 'TIMESTAMP',
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
+    },
+    updatedAt: {
+      type: 'TIMESTAMP',
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
     }
   });
   return Wine;

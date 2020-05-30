@@ -21,13 +21,6 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        age: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            validate: {
-                len: [1, 3]
-            }
-        },
         rating: {
             type: DataTypes.INTEGER,
             allowNull: true,
@@ -35,7 +28,17 @@ module.exports = function (sequelize, DataTypes) {
                 max: 10,
                 min: 1
             }
-        }
+        },
+        createdAt: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+          },
+          updatedAt: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+          }
     });
     return Whiskey;
 };
