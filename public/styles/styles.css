@@ -6,3 +6,9 @@
   margin-top: 30;
   margin-bottom: 30;
 }
+
+body {
+  background-image: url("background-image.jpg");
+  background-position: center;
+ 
+}
