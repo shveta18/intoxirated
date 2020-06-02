@@ -1,12 +1,12 @@
-$("#createWhiskey").on("click", function(event){
+$("#submit").on("click", function(event){
     event.preventDefault()
     var newWhiskey = {
-        name: $("#name").val().trim(),
-        manufacturer: $("#manufacturer").val().trim(),
-        style: $("#style").val().trim(),
+        name: $("#drinkCategorySelect option:selected").val(),
+        manufacturer: $("#manufacturer").val(),
+        style: $("#style").val(),
         rating: $("#rating").val()
     }
-
+console.log(newWhiskey);
     $.ajax({
         type: "POST",
         url: "/api/whiskey",
