@@ -7,12 +7,12 @@
   margin-bottom: 30;
 }
 
-/*body {
+#home {
   background-image: url("background-image.jpg");
   background-position: center;
   background-size: cover;
  
-}*/
+}
 
 body, html {
   height: 100%;
@@ -37,10 +37,10 @@ transform: translate(-50%, -50%);
 color: white;
 }
 
-.container {
+/*.container {
   background-color: #D3D3D3;
   width: 75%;
-}
+}*/
 
 .beer-list-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("beer-list.jpg");
