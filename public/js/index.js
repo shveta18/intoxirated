@@ -95,9 +95,6 @@
 // };
 
 
-$(submitBtn).on("click", handleFormSubmit);
-$(exampleList).on("click", ".delete", handleDeleteBtnClick);
-
 $("#addBeverage").on("click", function(event) {
   event.preventDefault()
   var drink = $("#drinkCategorySelect").val()

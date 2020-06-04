@@ -8,7 +8,7 @@ module.exports = function(app) {
   });
   
   app.get("/add-wine", function(req, res) {
-    res.render("addWine")
+    res.render("add-Wine")
   })
   
   app.get("/wine", function(req, res) {
@@ -19,7 +19,7 @@ module.exports = function(app) {
   });
 
   app.get("/add-beer", function(req, res) {
-    res.render("addBeer")
+    res.render("add-Beer")
   })
 
   app.get("/beer", function(req, res) {
@@ -30,7 +30,7 @@ module.exports = function(app) {
   });
 
   app.get("/add-whiskey", function(req, res) {
-    res.render("addwhiskey")
+    res.render("add-whiskey")
   })
 
   app.get("/whiskey", function(req, res) {
