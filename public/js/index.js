@@ -95,10 +95,10 @@
 // };
 
 
-// $submitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
 
 $("#wantToAdd").hide()
+
 
 $("#addBeverage").on("click", function(event) {
   event.preventDefault()

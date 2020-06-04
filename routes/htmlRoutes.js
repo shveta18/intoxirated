@@ -10,7 +10,7 @@ module.exports = function(app) {
   });
   
   app.get("/add-wine", function(req, res) {
-    res.render("addWine")
+    res.render("add-Wine")
   })
   
   app.get("/wine", function(req, res) {
@@ -42,13 +42,24 @@ module.exports = function(app) {
   })
 
   app.get("/add-beer", function(req, res) {
-    res.render("addBeer")
+    res.render("add-Beer")
   })
 
   app.get("/beer", function(req, res) {
-    db.Wine.findAll({}).then(function(data) {
+    db.Beer.findAll({}).then(function(data) {
       console.log(data)
       res.render("beer", {beers: data})
+    });
+  });
+
+  app.get("/add-whiskey", function(req, res) {
+    res.render("add-whiskey")
+  })
+
+  app.get("/whiskey", function(req, res) {
+    db.Beer.findAll({}).then(function(data) {
+      console.log(data)
+      res.render("whiskey", {whiskeys: data})
     });
   });
 

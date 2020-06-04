@@ -1,0 +1,28 @@
+<div class="whiskey-list-image">
+    <div class="whiskey-list-text">
+        <h1 style="font-size: 50px">Whiskey List!</h2>
+        <p>What's caught your eye?</p>
+        <a class="btn btn-primary" href="/">Home</a>
+        <a class="btn btn-primary" href="/wine">Wine List</a>
+        <a class="btn btn-primary" href="/beer">Beer List</a>
+    </div>
+</div>
+
+<div>
+    <table class="whiskey-list">
+        <tr>
+            <th>Name</th>
+            <th>Distillery</th>
+            <th>Style</th>
+            <th>Rating</th>
+        </tr>
+        <tr>
+          {{#each whiskeys}}
+            <td>{{this.dataValues.name}}</td>
+            <td>{{this.dataValues.manufacturer}}</td>
+            <td>{{this.dataValues.style}}</td>
+            <td>{{this.dataValues.rating}}</td> 
+          {{/each}}  
+        </tr>
+    </table>
+</div>
