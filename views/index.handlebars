@@ -2,7 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
         <div class="jumbotron">
           <h1 class="header">IntoxiRated</h1>
           <p class="lead">For the inner connoisseur in us all. Rate and track beverages of your choice and drink
@@ -49,10 +48,23 @@
   </div>
 </div>
 
+<div>
+  <h1>Beverage:</h1>
+  <div id="results"></div>
+</div>
+
+<div id="wantToAdd">
+  What you searched for is not in our database. Would you like to add it?
+  <button id="anotherAdd">Add Rating</button>
+</div>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+
+
 
 
 <script src="/js/whiskeyFrontEnd.js"></script>
 <script src="/js/beerFrontEnd.js"></script>
 <script src="/js/wineFrontEnd.js"></script>
+

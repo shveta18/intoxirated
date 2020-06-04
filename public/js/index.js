@@ -95,7 +95,19 @@
 // };
 
 
+
+
+$("#wantToAdd").hide()
+
+
 $("#addBeverage").on("click", function(event) {
+  event.preventDefault()
+  var drink = $("#drinkCategorySelect").val()
+
+  window.location.replace('/add-' + drink)
+})
+
+$("#anotherAdd").on("click", function(event) {
   event.preventDefault()
   var drink = $("#drinkCategorySelect").val()
 

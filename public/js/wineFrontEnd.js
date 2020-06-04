@@ -19,3 +19,35 @@ $("#createWine").on("click", function(event){
 })
 
 
+$("#submit").on("click", function(event) {
+    event.preventDefault()
+    var type = $("#drinkCategorySelect").val()
+    if(type === "Wine") {
+        var theWine = {
+            name: $("#name").val().trim(),
+            manufacturer: $("#manf-brew-dist").val().trim(),
+            style: $("#style").val().trim()
+        }
+
+        $.ajax({
+            method: "GET",
+            dataType: "JSON",
+            url: "/wine-search",
+            data: theWine
+        }).then(function(res) {
+            console.log(res)
+            $("#results").empty()
+            if(res.length > 0) {
+                for (let i = 0; i < res.length; i++) {
+                    var wineDiv = $("<div>")
+                    var data = res[i]
+                    wineDiv.text("Name: " + data.name + ".   Manufacturer: " + data.manufacturer + ".   Style: " + data.style + ".   Year: " + data.year + ".   Rating: " + data.rating)
+                    $("#results").append(wineDiv)
+                }
+            } else {
+                $("#wantToAdd").show()
+            }
+        })
+    }
+})
+
