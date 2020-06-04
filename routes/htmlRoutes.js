@@ -7,8 +7,6 @@ module.exports = function(app) {
     res.render("index")
   });
   
-  
-  
   app.get("/add-wine", function(req, res) {
     res.render("addWine")
   })
