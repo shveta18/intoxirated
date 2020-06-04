@@ -6,6 +6,10 @@ module.exports = function(app) {
   // Load index page
   
   app.get("/", function(req, res) {
+    res.render("landingpage2")
+  });
+
+  app.get("/index", function(req, res) {
     res.render("index")
   });
   
