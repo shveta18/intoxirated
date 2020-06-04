@@ -21,13 +21,7 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        category: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        },
+       
         alchoholByVolume: {
             type: DataTypes.DECIMAL,
             allowNull: true,
@@ -48,12 +42,12 @@ module.exports = function (sequelize, DataTypes) {
             type: 'TIMESTAMP',
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false
-          },
-          updatedAt: {
+        },
+        updatedAt: {
             type: 'TIMESTAMP',
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false
-          }
+          }   
     });
     return Beer;
 };

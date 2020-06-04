@@ -23,7 +23,7 @@ module.exports = function(app) {
   })
 
   app.get("/beer", function(req, res) {
-    db.Wine.findAll({}).then(function(data) {
+    db.Beer.findAll({}).then(function(data) {
       console.log(data)
       res.render("beer", {beers: data})
     });
