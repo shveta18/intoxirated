@@ -94,6 +94,14 @@
 //   });
 // };
 
-// // Add event listeners to the submit and delete buttons
-// $submitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+$submitBtn.on("click", handleFormSubmit);
+$exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+$("#addBeverage").on("click", function(event) {
+  event.preventDefault()
+  var drink = $("#drinkCategorySelect").val()
+
+  window.location.replace('/add-' + drink)
+})
+
