@@ -15,6 +15,12 @@ module.exports = function(app) {
     })
   })
 
+  app.post("/api/beer", function(req, res) {
+    db.Wine.create(req.body).then(function(data) {
+      res.json(data)
+    })
+  })
+
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(
