@@ -29,6 +29,17 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/add-whiskey", function(req, res) {
+    res.render("addwhiskey")
+  })
+
+  app.get("/whiskey", function(req, res) {
+    db.Beer.findAll({}).then(function(data) {
+      console.log(data)
+      res.render("whiskey", {whiskeys: data})
+    });
+  });
+
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(

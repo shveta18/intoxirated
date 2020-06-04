@@ -1,0 +1,48 @@
+<div class="add-whiskey-image">
+  <div class="add-whiskey-text">
+    <h1 style="font-size: 50px">Rate a Whiskey!</h1>
+    <p>Add a new whiskey to your collection or rate a previous one!</p>
+    <a class="btn btn-primary" href="/">Home</a>
+    <a class="btn btn-primary" href="/wine">Wine List</a>
+    <a class="btn btn-primary" href="/beer">Beer List</a>
+  </div>
+</div> 
+ 
+ <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+          <div class="whiskey-container">
+            <form method="POST" id="addWhiskey" role="form">
+
+                <div class="form-group questions">
+                    <label for="name">Enter Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="">
+                </div>
+
+                <div class="form-group questions">
+                    <label for="link-to-picture">Enter Distillery</label>
+                    <input type="text" class="form-control" id="brewer">
+                </div>
+
+                <div class="form-group questions">
+                    <label for="link-to-picture">Enter Style</label>
+                    <input type="text" class="form-control" id="style">
+                </div>
+
+
+                <div class="form-group questions">
+                    <label for="link-to-picture">Enter rating</label>
+                    <input type="number" min="1" max="10" class="form-control" id="rating">
+                </div>
+
+                <button type="button" class="btn btn-primary" id="createBeer">
+                    <span class="fa fa-glass">Rate a Whiskey!</button>
+
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/index.js"></script>
+<script src="/public/js/whiskeyFrontEnd.js" type="text/javascript"></script>

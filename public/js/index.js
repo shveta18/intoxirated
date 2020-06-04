@@ -95,8 +95,8 @@
 // };
 
 
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$(submitBtn).on("click", handleFormSubmit);
+$(exampleList).on("click", ".delete", handleDeleteBtnClick);
 
 $("#addBeverage").on("click", function(event) {
   event.preventDefault()
