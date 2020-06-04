@@ -1,4 +1,6 @@
 var db = require("../models");
+var Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = function(app) {
   // Load index page
@@ -17,6 +19,27 @@ module.exports = function(app) {
       res.render("wine", {wines: data})
     });
   });
+
+  app.get("/wine-search", function(req, res) {
+    var name = req.query.name
+    var manufacturer = req.query.manufacturer
+    var style = req.query.style
+    db.Wine.findAll({
+      where: {
+        name: {
+          [Op.like]: '%'+ name + '%'
+        },
+        style: {
+          [Op.like]: '%'+ style + '%'
+        },
+        manufacturer: {
+          [Op.like]: '%'+ manufacturer + '%'
+        }, 
+      }
+    }).then(function(data) {
+      res.json(data)
+    })
+  })
 
   app.get("/add-beer", function(req, res) {
     res.render("addBeer")
