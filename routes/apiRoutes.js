@@ -7,17 +7,24 @@ module.exports = function(app) {
 // Get request from front end to search db by criteria entered. 
 app.get("/api/search/", function(req, res) {
   console.log("Query is: ");
-    console.log(req.query);
-console.log(req.query.name);
-var search = req.query.name;
-  db.Whiskey.findOne({
+  console.log(req.query);
+var searchName = req.query.name;
+var searchManufacturer = req.query.manufacturer;
+var searchStyle = req.query.style;
+  db.Whiskey.findAll({
     where: {
       name: {
-        [Op.like]: '%'+ search + '%';
+        [Op.like]: '%'+ searchName + '%'
+      },
+      manufacturer: {
+        [Op.like]: '%'+ searchManufacturer + '%'
+      },
+      style: {
+        [Op.like]: '%'+ searchStyle + '%'
       }
     }
     
-      // name: {$req.query.name, 
+     
       // manufacturer: req.body.manufacturer, 
       // style: req.body.style
     
