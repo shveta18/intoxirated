@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Shallan4613!",
+    "password": "junket-serrate-postdate",
     "database": "alcohol_db",
     "host": "localhost",
     "dialect": "mysql"
