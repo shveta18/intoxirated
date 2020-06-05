@@ -47,5 +47,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
+
+  Wine.associate = function (models) {
+    Wine.hasMany(models.Rating, {
+        onDelete: "cascade"
+    });
+};
+
   return Wine;
 };

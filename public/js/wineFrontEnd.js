@@ -42,6 +42,10 @@ $("#submit").on("click", function(event) {
                     var wineDiv = $("<div>")
                     var data = res[i]
                     wineDiv.text("Name: " + data.name + ".   Manufacturer: " + data.manufacturer + ".   Style: " + data.style + ".   Year: " + data.year + ".   Rating: " + data.rating)
+                    var selfRating = $("<button>")
+                    selfRating.addClass("selfRating")
+                    selfRating.text("Add your own rating?")
+                    wineDiv.append(selfRating)
                     $("#results").append(wineDiv)
                 }
             } else {

@@ -114,3 +114,7 @@ $("#anotherAdd").on("click", function(event) {
   window.location.replace('/add-' + drink)
 })
 
+
+$(".selfRating").on("click", function() {
+  
+})
