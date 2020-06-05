@@ -168,12 +168,13 @@ body{
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input id="username" type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input id="password" type="password" placeholder="Enter Password" name="psw" required>
         
-      <button type="submit">Login</button>
+      <button id="login" type="submit">Login</button>
+      <button id="signUp" type="submit">Sign Up</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
@@ -196,6 +197,39 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+</script>
+<script>
+console.log("landing page")
+
+$("#signUp").on("click", function(event) {
+    event.preventDefault()
+    var newUser = {
+        name: $("#username").val().trim(),
+        password: $("#password").val().trim()
+    }
+    $.ajax({
+        type: "POST",
+        url: "/api/user",
+        data: newUser
+    }).then(function(res) {
+        console.log(res)
+    })
+})
+
+$("#login").on("click", function(event) {
+    event.preventDefault()
+    var newUser = {
+        name: $("#username").val().trim(),
+        password: $("#password").val().trim()
+    }
+    $.ajax({
+        type: "POST",
+        url: "/api/user-login",
+        data: newUser
+    }).then(function(res) {
+        console.log(res)
+    })
+})
 </script>
 
 </body>
