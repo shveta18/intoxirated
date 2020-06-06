@@ -48,7 +48,9 @@ module.exports = function (app) {
     }).then(function(data) {
       console.log(data);
       if(data) {
-        res.redirect('www.google.com');
+        res.redirect('https://google.com');
+      } else {
+        alert("Could not log in, please try again");
       }
     });
   });
