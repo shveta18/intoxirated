@@ -34,9 +34,6 @@ module.exports = function (app) {
     });
   });
 
-  
-
-
 // Create a new record in sql.
 app.post("/user-registration", function(req, res) {
   console.log("User data being sent to SQL");
