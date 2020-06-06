@@ -5,15 +5,18 @@ var session = require("express-session");
 const Op = Sequelize.Op;
 
 module.exports = function(app) {
-  // Load index page
   
+  
+  // Load index page
   app.get("/", function(req, res) {
     res.render("landingpage2")
   });
 
-  //AUTHENTICATION: homepage after after user logs in
+  //AUTHENTICATION: When user clicks login after entering username and password, post this to db
+  
+  //AUTHENTICATION: homepage (index) after after user logs in
  app.get("/myratings", function(req,res) {
-
+  res.render("index");
  })
 
 // AUTHENTICATION: Login post

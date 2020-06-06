@@ -201,7 +201,7 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-                <button type="submit">Login</button>
+                <button type="submit" id="user-login">Login</button>
                 <label>
                   <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
@@ -288,7 +288,38 @@
       }
     };
 
-    // Get the modal
+
+    // --------- LOGIN BY USER CODE ---------------
+    $("#user-login").on("click", function(event) {
+      event.preventDefault();
+      var userid = $("#uname").val();
+      var password = $("#psw").val();
+
+      userLoginDetails = {
+        userid: userid,
+        password: password
+      }
+      console.log("Client side User Details: ");
+      console.log(userLoginDetails);
+
+      if (userid == "" || password == "") {
+        alert("Please enter all criteria on the form");
+      } else {
+        $.ajax({
+          method: "POST",
+          dataType: "JSON",
+          url: "/user-login",
+          data: userLoginDetails
+        }).then(function (res) {
+          console.log(res)
+        });
+      }
+    });
+
+
+    // ---------- REGISTRATION CODE --------------- 
+
+    // Get the modal for registration
     var registrationModal = document.getElementById('register-modal');
 
     // When the user clicks anywhere outside of the modal, close it
