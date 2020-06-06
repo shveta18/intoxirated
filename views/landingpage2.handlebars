@@ -3,6 +3,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -195,10 +196,10 @@
 
               <div class="container">
                 <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
                 <button type="submit">Login</button>
                 <label>
@@ -207,8 +208,7 @@
               </div>
 
               <div class="container" style="background-color:#f1f1f1">
-                <button type="button" 
-                  class="cancelbtn">Cancel</button>
+                <button type="button" class="cancelbtn">Cancel</button>
                 <button type="button" class="btn btn-dark" id="register-button"
                   onclick="document.getElementById('register-modal').style.display='block'" style="width:auto;"
                   data-target="register-modal">Register</button>
@@ -231,18 +231,17 @@
                     <div class="form-group">
                       <span onclick="document.getElementById('register-modal').style.display='none'" class="close"
                         title="Close Modal">&times;</span>
-                      <label for="exampleFormControlInput1">Email address</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1"
-                        placeholder="name@example.com">
+                      <label for="userID">UserID</label>
+                      <input type="text" placeholder="Select UserID" name="userID" id="userID" required>
                     </div>
                     <div class="form-group">
                       <label for="first-name">First Name</label>
-                      <input type="text" placeholder="First Name" name="first-name" required>
+                      <input type="text" placeholder="First Name" name="first-name" id="first-name" required>
                     </div>
 
                     <div class="form-group">
                       <label for="last-name">Last Name</label>
-                      <input type="text" placeholder="Last Name" name="last-name" required>
+                      <input type="text" placeholder="Last Name" name="last-name" id="last-name" required>
                     </div>
 
                     <div class="form-group row">
@@ -259,38 +258,76 @@
               </div>
             </div>
           </div>
-          <script src="https://code.jquery.com/jquery-3.5.1.js"
-            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-          <script src="https://kit.fontawesome.com/bb6539ba94.js" crossorigin="anonymous"></script>
-          <script>
-            // Get the modal
-            var modal = document.getElementById('id01');
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
-              }
-            }
-
-          // Get the modal
-            var registrationModal = document.getElementById('register-modal');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-              if (event.target == registrationModal) {
-                registrationModal.style.display = "block";
-              }
-            }
-          </script>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/bb6539ba94.js" crossorigin="anonymous"></script>
+
+
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // Get the modal
+    var registrationModal = document.getElementById('register-modal');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == registrationModal) {
+        registrationModal.style.display = "block";
+      }
+    };
+
+    $("#register-submit").on("click", function (event) {
+      event.preventDefault()
+      var userid = $("#userID").val();
+      var firstName = $("#first-name").val();
+      var lastName = $("#last-name").val();
+      var password = $("#inputPassword").val();
+
+      var userDetails = {
+        userid: userid,
+        firstName: firstName,
+        lastName: lastName,
+        password: password
+      };
+      console.log(userDetails);
+      if (userid == "" || firstName == "" || lastName == "" || password == "") {
+        alert("Please enter all criteria on the form.");
+      } else {
+        $.ajax({
+          method: "POST",
+          dataType: "JSON",
+          url: "/user-registration",
+          data: userDetails
+        }).then(function (res) {
+          console.log(res)
+        });
+      }
+    });
+
+
+  </script>
 </body>
 
 </html>

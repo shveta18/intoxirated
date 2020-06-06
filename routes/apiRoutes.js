@@ -35,7 +35,15 @@ var searchStyle = req.query.style;
 });
 
 
-
+// Create a new record in sql.
+app.post("/user-registration", function(req, res) {
+  console.log("User data being sent to SQL");
+  console.log(req.body);
+  db.Users.create({userid: req.body.userid, firstName: req.body.firstName, lastName: req.body.lastName, password: req.body.password}).then(function(data) {
+    
+    res.json(data)
+  })
+})
 
 
   app.get("/api/examples", function(req, res) {
