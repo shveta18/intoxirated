@@ -40,7 +40,18 @@ module.exports = function (app) {
   app.post("/user-login", function(req,res) {
     console.log("Login details sent:");
     console.log(req.body);
-  })
+    // code to verify if username and password combination exists in db 
+    db.Users.findAll({
+      where: {
+        userid: req.body.userid, password: req.body.password
+      }
+    }).then(function(data) {
+      console.log(data);
+      if(data) {
+        res.redirect('www.google.com');
+      }
+    });
+  });
 // Create a new user in SQL DB when a new user registers
 app.post("/user-registration", function(req, res) {
   console.log("User data being sent to SQL");
@@ -48,8 +59,8 @@ app.post("/user-registration", function(req, res) {
   db.Users.create({userid: req.body.userid, firstName: req.body.firstName, lastName: req.body.lastName, password: req.body.password}).then(function(data) {
     
     res.json(data)
-  })
-})
+  });
+});
 
 
   app.get("/api/examples", function (req, res) {
