@@ -24,6 +24,9 @@ app.use(session({
   saveUninitialized: false,
   cookie: {maxAge: maxage, secure: false }
 }))
+
+
+
 // Handlebars
 app.engine(
   "handlebars",
