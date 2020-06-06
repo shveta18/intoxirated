@@ -47,11 +47,9 @@ module.exports = function (app) {
       }
     }).then(function(data) {
       console.log(data);
-      if(data) {
-        res.redirect('https://google.com');
-      } else {
-        alert("Could not log in, please try again");
-      }
+      if(data!=null && data !== '') {
+        res.redirect('/myratings');
+      } 
     });
   });
 // Create a new user in SQL DB when a new user registers
