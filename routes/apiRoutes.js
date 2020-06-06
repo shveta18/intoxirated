@@ -34,6 +34,13 @@ module.exports = function (app) {
     });
   });
 
+
+  // USER LOGIN CHECK in SQL DB 
+
+  app.post("/user-login", function(req,res) {
+    console.log("Login details sent:");
+    console.log(req.body);
+  })
 // Create a new user in SQL DB when a new user registers
 app.post("/user-registration", function(req, res) {
   console.log("User data being sent to SQL");
