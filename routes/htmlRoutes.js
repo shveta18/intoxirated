@@ -1,5 +1,7 @@
 var db = require("../models");
 var Sequelize = require("sequelize");
+var session = require("express-session");
+
 const Op = Sequelize.Op;
 
 module.exports = function(app) {
@@ -8,6 +10,13 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     res.render("landingpage2")
   });
+
+  //AUTHENTICATION: homepage after after user logs in
+ app.get("/myratings", function(req,res) {
+
+ })
+
+// AUTHENTICATION: Login post
 
   app.get("/index", function(req, res) {
     res.render("index")

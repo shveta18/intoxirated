@@ -34,7 +34,7 @@ module.exports = function (app) {
     });
   });
 
-// Create a new record in sql.
+// Create a new user in SQL DB when a new user registers
 app.post("/user-registration", function(req, res) {
   console.log("User data being sent to SQL");
   console.log(req.body);
