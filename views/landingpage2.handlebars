@@ -1,236 +1,333 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+    /* Full-width input fields */
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
 
-/* Set a style for all buttons */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+    /* Set a style for all buttons */
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
 
-button:hover {
-  opacity: 0.8;
-}
+    button:hover {
+      opacity: 0.8;
+    }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: #f44336;
+    }
 
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
+    /* Center the image and position the close button */
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+    }
 
-img.cheers {
-  width: 40%;
-  border-radius: 50%;
-}
+    img.cheers {
+      width: 40%;
+      border-radius: 50%;
+    }
 
-.container {
-  padding: 16px;
-}
+    .container {
+      padding: 16px;
+    }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
+    span.psw {
+      float: right;
+      padding-top: 16px;
+    }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+      padding-top: 60px;
+    }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto;
+      /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+    }
 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
+    /* The Close Button (x) */
+    .close {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+    }
 
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
+    .close:hover,
+    .close:focus {
+      color: red;
+      cursor: pointer;
+    }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
+    /* Add Zoom Animation */
+    .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s
+    }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
+    @-webkit-keyframes animatezoom {
+      from {
+        -webkit-transform: scale(0)
+      }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
+      to {
+        -webkit-transform: scale(1)
+      }
+    }
 
-body{
-    background-image: url('https://media.giphy.com/media/w7uVjJXTrYNDKlipqr/giphy.gif');
-    background-size: cover;
-    
-    
-    
-    height: 100vh;
-    padding:0;
-    margin:0;
-}
+    @keyframes animatezoom {
+      from {
+        transform: scale(0)
+      }
 
-.landingpagetext{
-    color: white;
-}
+      to {
+        transform: scale(1)
+      }
+    }
 
-.intoxirated {
-    text-align: center;
-}
-</style>
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+
+    body {
+      background-image: url('https://media.giphy.com/media/w7uVjJXTrYNDKlipqr/giphy.gif');
+      background-size: cover;
+
+
+
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+
+    .landingpagetext {
+      color: white;
+    }
+
+    .intoxirated {
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="landingpage">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <div class="landingpagetext">
-          <h1 class="intoxirated">IntoxiRated</h1>
-          <p class="lead">For the inner connoisseur in us all. Rate and track beverages of your choice and drink
-            responsibly. </p>
-        </div>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/index" method="get">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="../public/styles/cheers.jpg" alt="Cheers" class="cheers">
-    </div>
-
+  <div id="landingpage">
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input id="username" type="text" placeholder="Enter Username" name="uname" required>
+      <div class="row">
+        <div class="col-8 offset-2">
+          <div class="landingpagetext">
+            <h1 class="intoxirated">IntoxiRated</h1>
+            <p class="lead">For the inner connoisseur in us all. Rate and track beverages of your choice and drink
+              responsibly. </p>
+          </div>
 
-      <label for="psw"><b>Password</b></label>
-      <input id="password" type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button id="login" type="submit">Login</button>
-      <button id="signUp" type="submit">Sign Up</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+          <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+          <div id="id01" class="modal">
+
+            <form class="modal-content animate" action="/index" method="get">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                  title="Close Modal">&times;</span>
+                <img src="../public/styles/cheers.jpg" alt="Cheers" class="cheers">
+              </div>
+
+              <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+                <button type="submit">Login</button>
+                <label>
+                  <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+              </div>
+
+              <div class="container" style="background-color:#f1f1f1">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="button" class="btn btn-dark" id="register-button"
+                  onclick="document.getElementById('register-modal').style.display='block'" style="width:auto;"
+                  data-target="register-modal">Register</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+              </div>
+            </form>
+          </div>
+
+
+          <!-- Registration Modal -->
+          <div id="register-modal" class="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="register-title">Register for an account</h5>
+                </div>
+                <div class="modal-body">
+                  <!-- Body of registratoin modal -->
+                  <form>
+                    <div class="form-group">
+                      <span onclick="document.getElementById('register-modal').style.display='none'" class="close"
+                        title="Close Modal">&times;</span>
+                      <label for="userID">UserID</label>
+                      <input type="text" placeholder="Select UserID" name="userID" id="userID" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="first-name">First Name</label>
+                      <input type="text" placeholder="First Name" name="first-name" id="first-name" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="last-name">Last Name</label>
+                      <input type="text" placeholder="Last Name" name="last-name" id="last-name" required>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Choose password">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="register-submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/bb6539ba94.js" crossorigin="anonymous"></script>
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
+
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
         modal.style.display = "none";
-    }
-}
-</script>
-<script>
-console.log("landing page")
+      }
+    };
 
-$("#signUp").on("click", function(event) {
-    event.preventDefault()
-    var newUser = {
-        name: $("#username").val().trim(),
-        password: $("#password").val().trim()
-    }
-    $.ajax({
-        type: "POST",
-        url: "/api/user",
-        data: newUser
-    }).then(function(res) {
-        console.log(res)
-    })
-})
+    // Get the modal
+    var registrationModal = document.getElementById('register-modal');
 
-$("#login").on("click", function(event) {
-    event.preventDefault()
-    var newUser = {
-        name: $("#username").val().trim(),
-        password: $("#password").val().trim()
-    }
-    $.ajax({
-        type: "POST",
-        url: "/api/user-login",
-        data: newUser
-    }).then(function(res) {
-        console.log(res)
-    })
-})
-</script>
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == registrationModal) {
+        registrationModal.style.display = "block";
+      }
+    };
 
+    $("#register-submit").on("click", function (event) {
+      event.preventDefault()
+      var userid = $("#userID").val();
+      var firstName = $("#first-name").val();
+      var lastName = $("#last-name").val();
+      var password = $("#inputPassword").val();
+
+      var userDetails = {
+        userid: userid,
+        firstName: firstName,
+        lastName: lastName,
+        password: password
+      };
+      console.log(userDetails);
+      if (userid == "" || firstName == "" || lastName == "" || password == "") {
+        alert("Please enter all criteria on the form.");
+      } else {
+        $.ajax({
+          method: "POST",
+          dataType: "JSON",
+          url: "/user-registration",
+          data: userDetails
+        }).then(function (res) {
+          console.log(res)
+        });
+      }
+    });
+
+
+  </script>
 </body>
+
 </html>
