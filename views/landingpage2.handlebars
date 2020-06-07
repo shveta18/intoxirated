@@ -290,7 +290,7 @@
 
 
     // --------- LOGIN BY USER CODE ---------------
-    $("#user-login").on("click", function(event) {
+    $("#user-login").on("click", function (event) {
       event.preventDefault();
       var userid = $("#uname").val();
       var password = $("#psw").val();
@@ -309,10 +309,13 @@
           method: "POST",
           dataType: "JSON",
           url: "/user-login",
-          data: userLoginDetails
+          data: userLoginDetails,
+          xhrFields: {
+            withCredentials: true
+          }
         }).then(function (res) {
           console.log(res)
-          if(res.result == "success") {
+          if (res.result == "success") {
             $(location).attr('href', '/myratings');
           } else {
             alert("Invalid credentials. Please try again.");

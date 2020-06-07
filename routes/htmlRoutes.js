@@ -16,8 +16,15 @@ module.exports = function(app) {
   
   //AUTHENTICATION: homepage (index) after after user logs in
  app.get("/myratings", function(req,res) {
-  res.render("myratings");
- })
+   console.log(req.session.user);
+   console.log(req.cookies.sid);
+  if (req.session.user && req.cookies.sid) {
+    res.render("myratings");
+} else {
+    res.redirect("/");
+}    
+  
+ });
 
 // AUTHENTICATION: Login post
 

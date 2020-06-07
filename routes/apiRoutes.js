@@ -37,7 +37,7 @@ module.exports = function (app) {
     console.log("Login details sent:");
     console.log(req.body);
     // code to verify if username and password combination exists in db 
-    db.Users.findAll({
+    db.Users.findOne({
       where: {
         userid: req.body.userid, password: req.body.password
       }
@@ -48,13 +48,11 @@ module.exports = function (app) {
 
       if (data != null && data != '' && data != []) {
         // res.redirect('/myratings');
-        res.json({ "result": "success" });
-        for (var i = 0; i < data.length; i++) {
-          var userID = data[i].id;
-        }
-        req.session = userID;
+        req.session.user = data.dataValues; 
         console.log("user session id: ");
-        console.log(userID);
+        console.log(req.session.user);
+        res.json({ "result": "success" });
+        
       } else {
         res.json({ "result": "failure" });
       }
