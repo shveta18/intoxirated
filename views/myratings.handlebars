@@ -79,9 +79,9 @@
 
     {{!-- Add my Ratings modal window  --}}
 
-    <div class="modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable" id="rate" data-backdrop="static"
+    <div class="modal fade modal-dialog-scrollable" id="rate" data-backdrop="static"
       data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="rate-label">Add my new rating</h5>
@@ -165,6 +165,8 @@
     // When user searches for a beverage within their profile (my ratings page), the request must send this data to api routes and query the sql db.
     $("#submit").on("click", function (event) {
       event.preventDefault();
+      $("#wantToAdd").hide();
+      $("#results").show();
       var drinkSearch = {
         category: $("#drinkCategorySelect option:selected").val(),
         name: $("#name").val(),
