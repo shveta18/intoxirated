@@ -5,8 +5,10 @@
 
 <div class="container" id="myratings">
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-      <input type="radio" name="options" id="option1" checked> View my current ratings
+
+    {{!-- put active in input tag to show pre-pressed button. --}}
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option1"> View my current ratings
     </label>
     <label class="btn btn-secondary">
       <input type="radio" name="options" id="option2"> Rate Beers
@@ -19,15 +21,14 @@
     </label>
   </div>
   <hr>
-
+{{!-- Search form --}}
   <div class="form-group">
     <label for="drinkCategory">Search within current ratings: </label>
-          <select class="form-control" name="drinkCategory" id="drinkCategorySelect">
-            <option value="Wine">Wine</option>
-            <option value="Beer">Beer</option>
-            <option value="Whiskey">Whiskey</option>
-          </select>
-
+    <select class="form-control" name="drinkCategory" id="drinkCategorySelect">
+      <option value="Wine">Wine</option>
+      <option value="Beer">Beer</option>
+      <option value="Whiskey">Whiskey</option>
+    </select>
   </div>
   <div class="form-group">
     <input type="text" id="name" class="form-control" aria-describedby="example-text" placeholder="Name">
@@ -40,31 +41,4 @@
       placeholder="Manufacturer/Brewer/Distillery">
   </div>
   <button id="submit" class="btn btn-primary float-right">Search</button>
-</div>
-
-
-
-
-
-
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">Example</h5>
-          <p>
-            <strong>ID</strong>: {{example.id}}</p>
-          <p>
-            <p>
-              <strong>Text</strong>: {{example.text}}</p>
-            <p>
-              <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
