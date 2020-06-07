@@ -88,34 +88,34 @@
                 placeholder="Style">
             </div>
             <div class="form-group">
-              <label for="add-manufacturer">Manufacturer/Brewer/Distillery </label>
-              <input type="text" id="add-manuf" class="form-control" aria-describedby="example-text"
+              <label for="add-manf-brew-dist">Manufacturer/Brewer/Distillery </label>
+              <input type="text" id="add-manf-brew-dis" class="form-control" aria-describedby="example-text"
                 placeholder="Manufacturer/Brewer/Distillery">
             </div>
 
             {{!-- Ratings radio buttons --}}
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="1">
               <label class="form-check-label" for="add-rating">
                 Hated it
               </label>
               <br>
-              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="2">
               <label class="form-check-label" for="add-rating">
                 Will drink if stranded on an island
               </label>
               <br>
-              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="3">
               <label class="form-check-label" for="add-rating">
                 Average
               </label>
               <br>
-              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="4">
               <label class="form-check-label" for="add-rating">
                 Pretty good
               </label>
               <br>
-              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="5">
               <label class="form-check-label" for="add-rating">
                 Exquisite 
               </label>
@@ -142,10 +142,9 @@
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/bb6539ba94.js" crossorigin="anonymous"></script>
   <script>
-    // When user searches within their profile (my ratings page), the request must send this data to api routes
-    $("#submit").on("click", function (event) {
+    // When user searches for a beverage within their profile (my ratings page), the request must send this data to api routes and query the sql db.
+        $("#submit").on("click", function (event) {
       event.preventDefault();
-
       var drinkSearch = {
         category: $("#drinkCategorySelect option:selected").val(),
         name: $("#name").val(),
@@ -180,16 +179,26 @@
         }
       });
     });
+  
 
-
-
-    // When user clicks the add button 
-    $("#anotherAdd").on("click", function (event) {
+    // When user submits NEW RATING / ADD NEW RECORD AND RATING
+    $("#submit-rating").on("click", function (event) {
       event.preventDefault();
+       var addNewRating = {
+        category: $("#add-category option:selected").val(),
+        name: $("#add-name").val(),
+        manufacturer: $("#add-manf-brew-dist").val(),
+        style: $("#add-style").val(),
+        rating: $("input:radio[name='rating']:checked").val()
+      }
+      console.log(addNewRating);
       $.ajax({
-        type: "GET",
+        type: "POST",
         url: "/api/rate",
-        data: newWine
+        data: addNewRating,
+        xhrFields: {
+          withCredentials: true
+        }
       }).then(function (res) {
         console.log(res)
       });
