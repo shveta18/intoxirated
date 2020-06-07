@@ -16,7 +16,7 @@ module.exports = function(app) {
   
   //AUTHENTICATION: homepage (index) after after user logs in
  app.get("/myratings", function(req,res) {
-  res.render("index");
+  res.render("myratings");
  })
 
 // AUTHENTICATION: Login post

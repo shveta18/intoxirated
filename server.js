@@ -10,6 +10,7 @@ var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
 var maxage = 1000 * 60 *60;
+// session name env variable
 var sessid = 'sid';
 
 // Middleware
@@ -21,8 +22,9 @@ app.use(express.static("public"));
 app.use(session({
   name: sessid,
   secret: 'secret dodo project',
+  resave: false,
   saveUninitialized: false,
-  cookie: {maxAge: maxage, secure: false }
+  cookie: {maxAge: maxage, secure: false, sameSite: true}
 }))
 
 

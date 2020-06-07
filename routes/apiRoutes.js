@@ -4,14 +4,15 @@ const Op = Sequelize.Op;
 
 module.exports = function (app) {
 
-  // Get request from front end to search db by criteria entered. 
+  // If the user searches for beverage, the sql code will query, the userResults table and display
+  // ADD CODE HERE TO LIMIT THE RESULTS TO THE ID OF THE USER. 
   app.get("/api/search/", function (req, res) {
     console.log("Query is: ");
     console.log(req.query);
     var searchName = req.query.name;
     var searchManufacturer = req.query.manufacturer;
     var searchStyle = req.query.style;
-    db.Whiskey.findAll({
+    db.UserRatings.findAll({
       where: {
         name: {
           [Op.like]: '%' + searchName + '%'
@@ -23,11 +24,6 @@ module.exports = function (app) {
           [Op.like]: '%' + searchStyle + '%'
         }
       }
-
-
-      // manufacturer: req.body.manufacturer, 
-      // style: req.body.style
-
     }).then(function (data) {
       console.log(data);
       res.json(data);
@@ -37,7 +33,7 @@ module.exports = function (app) {
 
   // USER LOGIN CHECK in SQL DB 
 
-  app.post("/user-login", function(req,res) {
+  app.post("/user-login", function (req, res) {
     console.log("Login details sent:");
     console.log(req.body);
     // code to verify if username and password combination exists in db 
@@ -45,26 +41,41 @@ module.exports = function (app) {
       where: {
         userid: req.body.userid, password: req.body.password
       }
-    }).then(function(data) {
+    }).then(function (data) {
       console.log(data);
-      if(data != null && data != '' && data != []) {
-       // res.redirect('/myratings');
-       res.json({"result": "success"});
+      console.log(data.length);
+      //store the user id as a req session id. 
+
+      if (data != null && data != '' && data != []) {
+        // res.redirect('/myratings');
+        res.json({ "result": "success" });
+        for (var i = 0; i < data.length; i++) {
+          var userID = data[i].id;
+        }
+        req.session = userID;
+        console.log("user session id: ");
+        console.log(userID);
       } else {
-        res.json({"result": "failure"});
+        res.json({ "result": "failure" });
       }
     });
   });
-// Create a new user in SQL DB when a new user registers
-app.post("/user-registration", function(req, res) {
-  console.log("User data being sent to SQL");
-  console.log(req.body);
-  db.Users.create({userid: req.body.userid, firstName: req.body.firstName, lastName: req.body.lastName, password: req.body.password}).then(function(data) {
-    
-    res.json(data)
-  });
-});
+  // Create a new user in SQL DB when a new user registers
+  app.post("/user-registration", function (req, res) {
+    console.log("User data being sent to SQL");
+    console.log(req.body);
+    db.Users.create({ userid: req.body.userid, firstName: req.body.firstName, lastName: req.body.lastName, password: req.body.password }).then(function (data) {
 
+      res.json(data)
+    });
+  });
+
+  // When user submits a WINE, it gets added to the userRatings table
+  app.post("/api/wine", function (req, res) {
+    db.UserRatings.create(req.body).then(function (data) {
+      res.json(data)
+    });
+  });
 
   app.get("/api/examples", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
