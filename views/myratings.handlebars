@@ -1,44 +1,100 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Home</a>
-  <button type="button" class="btn btn-outline-danger" id="logout">Log Out</button>
-</nav>
+<!DOCTYPE html>
+<html>
 
-<div class="container" id="myratings">
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Ratings</title>
+</head>
 
-    {{!-- put active in input tag to show pre-pressed button. --}}
-    <label class="btn btn-secondary">
-      <input type="radio" name="options" id="option1"> View my current ratings
-    </label>
-    <label class="btn btn-secondary">
-      <input type="radio" name="options" id="option2"> Rate Beers
-    </label>
-    <label class="btn btn-secondary">
-      <input type="radio" name="options" id="option3"> Rate Wines
-    </label>
-    <label class="btn btn-secondary">
-      <input type="radio" name="options" id="option3"> Rate Whiskeys
-    </label>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Home</a>
+    <button type="button" class="btn btn-outline-danger" id="logout">Log Out</button>
+  </nav>
+
+  <div class="container" id="myratings">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+      {{!-- put active in input tag to show pre-pressed button. --}}
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option1"> View my current ratings
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option2"> Rate Beers
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option3"> Rate Wines
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option3"> Rate Whiskeys
+      </label>
+    </div>
+    <hr>
+    {{!-- Search form --}}
+    <div class="form-group">
+      <label for="drinkCategorySelect">Search within current ratings: </label>
+      <select class="form-control" name="drinkCategory" id="drinkCategorySelect">
+        <option value="Wine">Wine</option>
+        <option value="Beer">Beer</option>
+        <option value="Whiskey">Whiskey</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="text" id="name" class="form-control" aria-describedby="example-text" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <input type="text" id="style" class="form-control" aria-describedby="example-text" placeholder="Style">
+    </div>
+    <div class="form-group">
+      <input type="text" id="manf-brew-dist" class="form-control" aria-describedby="example-text"
+        placeholder="Manufacturer/Brewer/Distillery">
+    </div>
+    <button id="submit" class="btn btn-primary float-right">Search</button>
   </div>
-  <hr>
-{{!-- Search form --}}
-  <div class="form-group">
-    <label for="drinkCategory">Search within current ratings: </label>
-    <select class="form-control" name="drinkCategory" id="drinkCategorySelect">
-      <option value="Wine">Wine</option>
-      <option value="Beer">Beer</option>
-      <option value="Whiskey">Whiskey</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <input type="text" id="name" class="form-control" aria-describedby="example-text" placeholder="Name">
-  </div>
-  <div class="form-group">
-    <input type="text" id="style" class="form-control" aria-describedby="example-text" placeholder="Style">
-  </div>
-  <div class="form-group">
-    <input type="text" id="manf-brew-dist" class="form-control" aria-describedby="example-text"
-      placeholder="Manufacturer/Brewer/Distillery">
-  </div>
-  <button id="submit" class="btn btn-primary float-right">Search</button>
-</div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/bb6539ba94.js" crossorigin="anonymous"></script>
+  <script>
+    // When user searches within their profile (my ratings page), the request must send this data to api routes
+    $("#submit").on("click", function (event) {
+      event.preventDefault();
+    
+        var drinkSearch = {
+          category: $("#drinkCategorySelect option:selected").val(),
+          name: $("#name").val(),
+          manufacturer: $("#manf-brew-dist").val(),
+          style: $("#style").val(),
+          rating: $("#rating").val()
+        }
+        console.log(drinkSearch);
+        //Create a GET requeset to api-routes.js and get results from Database.
+        $.ajax({
+          method: "GET",
+          dataType: "JSON",
+          url: "/api/search",
+          data: drinkSearch,
+          xhrFields: {
+            withCredentials: true
+          }
+        }).then(function (res) {
+          console.log(res);
+          if (res.isUserLoggedIn === false) {
+            // we redirect to login page
+            $(location).attr('href', '/');
+          } else {
+            alert("No results found");
+          }
+        });
+      });
+
+ </script>
+</body>
+
+</html>

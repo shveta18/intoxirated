@@ -9,25 +9,39 @@ module.exports = function (app) {
   app.get("/api/search/", function (req, res) {
     console.log("Query is: ");
     console.log(req.query);
-    var searchName = req.query.name;
-    var searchManufacturer = req.query.manufacturer;
-    var searchStyle = req.query.style;
-    db.UserRatings.findAll({
-      where: {
-        name: {
-          [Op.like]: '%' + searchName + '%'
-        },
-        manufacturer: {
-          [Op.like]: '%' + searchManufacturer + '%'
-        },
-        style: {
-          [Op.like]: '%' + searchStyle + '%'
+    // If the user is logged in and there is a session ID then proceed to search the DB
+    // else redirect to the login page.
+    if (req.session.user && req.cookies.sid) {
+      // get the user session and user id from the request
+      var loggedUserId = req.session.user.id;
+      var searchCategory = req.query.category;
+      var searchName = req.query.name;
+      var searchManufacturer = req.query.manufacturer;
+      var searchStyle = req.query.style;
+
+      db.UserRatings.findAll({
+        where: {
+          userID: loggedUserId,
+          category: {
+            [Op.like]: '%' + searchCategory + '%'
+          },
+          name: {
+            [Op.like]: '%' + searchName + '%'
+          },
+          manufacturer: {
+            [Op.like]: '%' + searchManufacturer + '%'
+          },
+          style: {
+            [Op.like]: '%' + searchStyle + '%'
+          }
         }
-      }
-    }).then(function (data) {
-      console.log(data);
-      res.json(data);
-    });
+      }).then(function (data) {
+        console.log(data);
+        res.json(data);
+      });
+    } else {
+      res.json({ "isUserLoggedIn": false });
+    }
   });
 
 
@@ -48,11 +62,15 @@ module.exports = function (app) {
 
       if (data != null && data != '' && data != []) {
         // res.redirect('/myratings');
-        req.session.user = data.dataValues; 
+        req.session.user = data.dataValues;
         console.log("user session id: ");
         console.log(req.session.user);
-        res.json({ "result": "success" });
-        
+        res.json(
+          {
+            "result": "success"
+          }
+        );
+
       } else {
         res.json({ "result": "failure" });
       }
