@@ -163,15 +163,17 @@
           withCredentials: true
         }
       }).then(function (res) {
+        console.log("The result from SQL is: ");
         console.log(res);
         if (res.isUserLoggedIn === false) {
           // we redirect to login page
           $(location).attr('href', '/');
         } else {
           // if user is logged in display data.
+          console.log("Search results have data and it will display on screen"); 
           // If sql contains data, display, else show the want to add your record link.
-          if (res.data) {
-            // ADD CODE HERE!
+          if (res.searchResults != null && res.searchResults != '' && res.searchResults != []) {
+            console.log("data array is not empty so populate table now");
           }
           else {
             $("#wantToAdd").show();

@@ -21,24 +21,22 @@ module.exports = function (app) {
 
       db.UserRatings.findAll({
         where: {
-          userID: loggedUserId,
-          category: {
-            [Op.like]: '%' + searchCategory + '%'
-          },
+          [Op.and]:[{UserID: loggedUserId}, {category: searchCategory}],
           name: {
             [Op.like]: '%' + searchName + '%'
           },
-          manufacturer: {
+          [Op.or]:[
+          {manufacturer: {
             [Op.like]: '%' + searchManufacturer + '%'
-          },
-          style: {
+          }},
+          {style: {
             [Op.like]: '%' + searchStyle + '%'
-          }
+          }}]
         }
       }).then(function (data) {
+        console.log("The SQL Query results are:");
         console.log(data);
-
-        res.json(data);
+        res.json({"searchResults": data});
       });
     } else {
       res.json({ "isUserLoggedIn": false });
@@ -85,10 +83,10 @@ module.exports = function (app) {
             userid: req.body.userid, password: req.body.password
           }
         }).then(function (data) {
+          console.log("checkpoint 1");
           console.log(data);
-          console.log(data.length);
+          console.log("checkpoint 2");
           //store the user id as a req session id. 
-
           if (data != null && data != '' && data != []) {
             // res.redirect('/myratings');
             req.session.user = data.dataValues;
