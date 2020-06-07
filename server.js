@@ -16,7 +16,7 @@ var sessid = 'sid';
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
-var sessid = 'sid';
+
 // setting user sessions 
 app.use(session({
   name: sessid,
@@ -37,7 +37,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/userApiRoutes")(app);
+// require("./routes/userApiRoutes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
