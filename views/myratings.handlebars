@@ -50,6 +50,12 @@
         placeholder="Manufacturer/Brewer/Distillery">
     </div>
     <button id="submit" class="btn btn-primary float-right">Search</button>
+
+    <hr>
+    <div id="wantToAdd" style="display: none">
+  What you searched for is not in our database. Would you like to add it?
+  <button id="anotherAdd">Add Rating</button>
+</div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -89,7 +95,14 @@
             // we redirect to login page
             $(location).attr('href', '/');
           } else {
-            alert("No results found");
+            // if user is logged in display data.
+            // If sql contains data, display, else show the want to add your record link.
+            if(res.data) {
+// ADD CODE HERE!
+            }
+            else {
+              $("#wantToAdd").show();
+            }
           }
         });
       });
