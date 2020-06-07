@@ -53,9 +53,83 @@
 
     <hr>
     <div id="wantToAdd" style="display: none">
-  What you searched for is not in our database. Would you like to add it?
-  <button id="anotherAdd">Add Rating</button>
-</div>
+      What you searched for is not in our database. Would you like to add it?
+      <button id="anotherAdd" data-toggle="modal" data-target="#rate">Add Rating</button>
+    </div>
+
+    {{!-- Add my Ratings modal window  --}}
+
+    <div class="modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable" id="rate" data-backdrop="static"
+      data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rate-label">Add my new rating</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="add-category">Category </label>
+              <select class="form-control" name="drinkCategory" id="add-category">
+                <option value="Wine">Wine</option>
+                <option value="Beer">Beer</option>
+                <option value="Whiskey">Whiskey</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="add-name">Name </label>
+              <input type="text" id="add-name" class="form-control" aria-describedby="example-text" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="add-style">Style </label>
+              <input type="text" id="add-style" class="form-control" aria-describedby="example-text"
+                placeholder="Style">
+            </div>
+            <div class="form-group">
+              <label for="add-manufacturer">Manufacturer/Brewer/Distillery </label>
+              <input type="text" id="add-manuf" class="form-control" aria-describedby="example-text"
+                placeholder="Manufacturer/Brewer/Distillery">
+            </div>
+
+            {{!-- Ratings radio buttons --}}
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <label class="form-check-label" for="add-rating">
+                Hated it
+              </label>
+              <br>
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <label class="form-check-label" for="add-rating">
+                Will drink if stranded on an island
+              </label>
+              <br>
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <label class="form-check-label" for="add-rating">
+                Average
+              </label>
+              <br>
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <label class="form-check-label" for="add-rating">
+                Pretty good
+              </label>
+              <br>
+              <input class="form-check-input" type="radio" name="rating" id="add-rating" value="option1">
+              <label class="form-check-label" for="add-rating">
+                Exquisite 
+              </label>
+            </div>
+
+          </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary submit-rating" id="submit-rating">Submit Rating</button>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -71,43 +145,57 @@
     // When user searches within their profile (my ratings page), the request must send this data to api routes
     $("#submit").on("click", function (event) {
       event.preventDefault();
-    
-        var drinkSearch = {
-          category: $("#drinkCategorySelect option:selected").val(),
-          name: $("#name").val(),
-          manufacturer: $("#manf-brew-dist").val(),
-          style: $("#style").val(),
-          rating: $("#rating").val()
+
+      var drinkSearch = {
+        category: $("#drinkCategorySelect option:selected").val(),
+        name: $("#name").val(),
+        manufacturer: $("#manf-brew-dist").val(),
+        style: $("#style").val(),
+        rating: $("#rating").val()
+      }
+      console.log(drinkSearch);
+      //Create a GET requeset to api-routes.js and get results from Database.
+      $.ajax({
+        method: "GET",
+        dataType: "JSON",
+        url: "/api/search",
+        data: drinkSearch,
+        xhrFields: {
+          withCredentials: true
         }
-        console.log(drinkSearch);
-        //Create a GET requeset to api-routes.js and get results from Database.
-        $.ajax({
-          method: "GET",
-          dataType: "JSON",
-          url: "/api/search",
-          data: drinkSearch,
-          xhrFields: {
-            withCredentials: true
+      }).then(function (res) {
+        console.log(res);
+        if (res.isUserLoggedIn === false) {
+          // we redirect to login page
+          $(location).attr('href', '/');
+        } else {
+          // if user is logged in display data.
+          // If sql contains data, display, else show the want to add your record link.
+          if (res.data) {
+            // ADD CODE HERE!
           }
-        }).then(function (res) {
-          console.log(res);
-          if (res.isUserLoggedIn === false) {
-            // we redirect to login page
-            $(location).attr('href', '/');
-          } else {
-            // if user is logged in display data.
-            // If sql contains data, display, else show the want to add your record link.
-            if(res.data) {
-// ADD CODE HERE!
-            }
-            else {
-              $("#wantToAdd").show();
-            }
+          else {
+            $("#wantToAdd").show();
           }
-        });
+        }
+      });
+    });
+
+
+
+    // When user clicks the add button 
+    $("#anotherAdd").on("click", function (event) {
+      event.preventDefault();
+      $.ajax({
+        type: "GET",
+        url: "/api/rate",
+        data: newWine
+      }).then(function (res) {
+        console.log(res)
       });
 
- </script>
+    });
+  </script>
 </body>
 
 </html>
