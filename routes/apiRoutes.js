@@ -47,9 +47,12 @@ module.exports = function (app) {
       }
     }).then(function(data) {
       console.log(data);
-      if(data!=null && data !== '') {
-        res.redirect('/myratings');
-      } 
+      if(data != null && data != '' && data != []) {
+       // res.redirect('/myratings');
+       res.json({"result": "success"});
+      } else {
+        res.json({"result": "failure"});
+      }
     });
   });
 // Create a new user in SQL DB when a new user registers

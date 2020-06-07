@@ -312,6 +312,11 @@
           data: userLoginDetails
         }).then(function (res) {
           console.log(res)
+          if(res.result == "success") {
+            $(location).attr('href', '/myratings');
+          } else {
+            alert("Invalid credentials. Please try again.");
+          }
         });
       }
     });
