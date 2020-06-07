@@ -36,7 +36,7 @@ module.exports = function (app) {
       }).then(function (data) {
         console.log("The SQL Query results are:");
         console.log(data);
-        res.json({"searchResults": data});
+        res.json(data);
       });
     } else {
       res.json({ "isUserLoggedIn": false });
