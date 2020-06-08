@@ -7,8 +7,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Home</a>
+  <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
     <div style="position:absolute; right:0;">
       <a class="navbar-brand" href="/logout">Log Out</a>
     </div>
@@ -101,7 +100,7 @@
             </div>
             <div class="form-group">
               <label for="add-manf-brew-dist">Manufacturer/Brewer/Distillery </label>
-              <input type="text" id="add-manf-brew-dis" class="form-control" aria-describedby="example-text"
+              <input type="text" id="add-manf-brew-dist" class="form-control" aria-describedby="example-text"
                 placeholder="Manufacturer/Brewer/Distillery">
             </div>
 
@@ -155,8 +154,8 @@
   <script src="https://kit.fontawesome.com/bb6539ba94.js" crossorigin="anonymous"></script>
   <script>
 
-// ====== When user searches for all ratings
-$("#all-ratings").on("click", function (event) {
+    // ====== When user searches for all ratings
+    $("#all-ratings").on("click", function (event) {
       event.preventDefault();
       //==== hide options to add a new rating until we get a response back
       $("#wantToAdd").hide();
@@ -189,8 +188,8 @@ $("#all-ratings").on("click", function (event) {
                         <td>${i + 1}</td>
                         <td>${res[i].category}</td>
                         <td>${res[i].name}</td>
-                        <td>${res[i].manufacturer}</td>
                         <td>${res[i].style}</td>
+                        <td>${res[i].manufacturer}</td>
                         <td>${res[i].rating}</td>
                       </tr>`
               $("#results-table").append(row);
@@ -285,7 +284,22 @@ $("#all-ratings").on("click", function (event) {
       });
 
     });
+
+
+    $.ajax({
+      method: "GET",
+      dataType: "JSON",
+      url: "/api/welcome",
+    }).then(function (res) {
+      console.log(res)
+      var name = res.name
+      var div = $("<div>")
+      div.text("Welcome " + name)
+      div.addClass("navbar-brand")
+      $("#nav").append(div)
+    });
   </script>
 </body>
 
 </html>
+

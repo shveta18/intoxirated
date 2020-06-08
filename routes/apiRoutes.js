@@ -59,7 +59,7 @@ module.exports = function (app) {
 
       db.UserRatings.findAll({
         where: {
-          UserID: loggedUserId 
+          UserID: loggedUserId
         }
       }).then(function (data) {
         console.log("The SQL Query results are:");
@@ -142,4 +142,22 @@ module.exports = function (app) {
       res.json(data)
     });
   });
+
+  app.get("/api/welcome", function (req, res) {
+    console.log("checkpoint 99")
+    var loggedUserId = req.session.user.id;
+    db.UserRatings.findOne({
+      Where: {
+        [Op.and]: [{ UserID: loggedUserId }]
+      }
+    }).then(function (data) {
+      console.log("Here's the data")
+      console.log(data.dataValues);
+      res.json(data)
+    });
+  });
+
+
+
+
 };
