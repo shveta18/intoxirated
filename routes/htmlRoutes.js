@@ -12,8 +12,14 @@ module.exports = function(app) {
     res.render("landingpage2")
   });
 
-  //AUTHENTICATION: When user clicks login after entering username and password, post this to db
-  
+ 
+  // USER LOGOUT 
+app.get("/logout", function(req,res) {
+  console.log("User logout out req received");
+  req.session.destroy();
+  res.render("logout");
+});
+
   //AUTHENTICATION: homepage (index) after after user logs in
  app.get("/myratings", function(req,res) {
    console.log(req.session.user);
