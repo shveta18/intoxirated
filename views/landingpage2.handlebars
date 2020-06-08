@@ -35,12 +35,7 @@
       opacity: 0.8;
     }
 
-    /* Extra styles for the cancel button */
-    .cancelbtn {
-      width: auto;
-      padding: 10px 18px;
-      background-color: #f44336;
-    }
+
 
     /* Center the image and position the close button */
     .imgcontainer {
@@ -183,7 +178,7 @@
               responsibly. </p>
           </div>
 
-          <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+          <button type="button" class="btn btn-success btn-lg" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
           <div id="id01" class="modal">
 
@@ -191,7 +186,8 @@
               <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close"
                   title="Close Modal">&times;</span>
-                <img src="../public/styles/cheers.jpg" alt="Cheers" class="cheers">
+                 <span style="font-size: 50px;">🍻</span> 
+                {{!-- <img src="../public/styles/cheers.jpg" alt="Cheers" class="cheers"> --}}
               </div>
 
               <div class="container">
@@ -208,60 +204,66 @@
               </div>
 
               <div class="container" style="background-color:#f1f1f1">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <button type="button" class="btn btn-dark" id="register-button"
-                  onclick="document.getElementById('register-modal').style.display='block'" style="width:auto;"
-                  data-target="register-modal">Register</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <button type="button" class="btn btn-danger">Cancel</button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="btn btn-dark" id="register-button"
+                      onclick="document.getElementById('register-modal').style.display='block'" style="width:auto;"
+                      data-target="register-modal">Register</button>
+                  </div>
+                </div>
               </div>
-            </form>
           </div>
+          </form>
+        </div>
 
 
-          <!-- Registration Modal -->
-          <div id="register-modal" class="modal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="register-title">Register for an account</h5>
-                </div>
-                <div class="modal-body">
-                  <!-- Body of registratoin modal -->
-                  <form>
-                    <div class="form-group">
-                      <span onclick="document.getElementById('register-modal').style.display='none'" class="close"
-                        title="Close Modal">&times;</span>
-                      <label for="userID">UserID</label>
-                      <input type="text" placeholder="Select UserID" name="userID" id="userID" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="first-name">First Name</label>
-                      <input type="text" placeholder="First Name" name="first-name" id="first-name" required>
-                    </div>
+        <!-- Registration Modal -->
+        <div id="register-modal" class="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="register-title">Register for an account</h5>
+              </div>
+              <div class="modal-body">
+                <!-- Body of registratoin modal -->
+                <form>
+                  <div class="form-group">
+                    <span onclick="document.getElementById('register-modal').style.display='none'" class="close"
+                      title="Close Modal">&times;</span>
+                    <label for="userID">UserID</label>
+                    <input type="text" placeholder="Select UserID" name="userID" id="userID" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" placeholder="First Name" name="first-name" id="first-name" required>
+                  </div>
 
-                    <div class="form-group">
-                      <label for="last-name">Last Name</label>
-                      <input type="text" placeholder="Last Name" name="last-name" id="last-name" required>
-                    </div>
+                  <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" placeholder="Last Name" name="last-name" id="last-name" required>
+                  </div>
 
-                    <div class="form-group row">
-                      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                      <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Choose password">
-                      </div>
+                  <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Choose password">
                     </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" id="register-submit">Submit</button>
-                </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="register-submit">Submit</button>
               </div>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
+  </div>
   </div>
 
 
