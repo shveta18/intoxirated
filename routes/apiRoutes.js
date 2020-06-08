@@ -145,16 +145,10 @@ module.exports = function (app) {
 
   app.get("/api/welcome", function (req, res) {
     console.log("checkpoint 99")
-    var loggedUserId = req.session.user.id;
-    db.UserRatings.findOne({
-      Where: {
-        [Op.and]: [{ UserID: loggedUserId }]
-      }
-    }).then(function (data) {
-      console.log("Here's the data")
-      console.log(data.dataValues);
-      res.json(data)
-    });
+    var loggedUserId = req.session.user.userid;
+    console.log(loggedUserId)
+      res.json(loggedUserId)
+  
   });
 
 
