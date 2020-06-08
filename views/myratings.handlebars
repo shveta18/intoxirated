@@ -292,9 +292,8 @@
       url: "/api/welcome",
     }).then(function (res) {
       console.log(res)
-      var name = res.name
       var div = $("<div>")
-      div.text("Welcome " + name)
+      div.text("Welcome " + res)
       div.addClass("navbar-brand")
       $("#nav").append(div)
     });
