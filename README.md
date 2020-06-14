@@ -10,6 +10,7 @@ IntoxiRated is a user-session based app used to track a users rating for beverag
 ## Database 
 1. MySQL 
 ## How to use
+LINK: https://bootcampbestproject.herokuapp.com/
 1. The user must log in using their userID and password. If the password is incorrect that is flagged. A new user may also register for the app and use the login credentials to proceed. 
 2. Once the user is logged in, they see a simple layout for querying the db across three options - Beer, Wine, Whiskey
 3. The user can query based on a search criteria to retreive their rating
