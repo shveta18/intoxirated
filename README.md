@@ -19,6 +19,6 @@ IntoxiRated is a user-session based app used to track a users rating for beverag
 
 
 ## Collaborators
-Billy Behman
-Mike Gruschow
-Shveta Kumar
+1. Billy Behman
+2. Mike Gruschow
+3. Shveta Kumar
